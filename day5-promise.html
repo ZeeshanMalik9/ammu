@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Day 🤝</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="promise-day">
+    <div class="container">
+
+        <!-- Navigation -->
+        <a href="index.html" class="nav-link" style="position: absolute; top: 20px; left: 20px;">🏠 Home</a>
+
+        <div class="card">
+            <h1>Happy Promise Day Ammu! 🤞</h1>
+
+            <div style="margin-top: 30px;">
+                <img src="https://media.giphy.com/media/l4pTfx2qLszoacZRS/giphy.gif" alt="Promise"
+                    style="max-width: 100%; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            </div>
+
+            <div class="promise-quote">
+                "Dekh le again I promise.. tera bahot bahot bahot sir khane wala hun! 😜.. tang hoke thag gayi to bi aur tang karunga.. and so gayi to utha ke tang karuna 😁"
+                <br>
+                <span style="font-size: 1rem; color: #555;">(Translation: Look, I promise again.. I'm going to annoy you
+                    a lot!)</span>
+            </div>
+
+            <button class="btn" onclick="revealPromises()">Click to Seal the Promise! 🔒</button>
+
+            <div id="extra-promises" class="hidden"
+                style="margin-top: 20px; text-align: left; background: rgba(255,255,255,0.6); padding: 20px; border-radius: 10px;">
+                <h3>More Promises for You:</h3>
+                <ul style="list-style: none; margin-top: 10px;">
+                    <li>🍫 I promise to share my chocolates (sometimes). ghanta nahi karne wala sachai.. 😂</li>
+                    <li>🧸 I promise to be your teddy when you're sad. 😭.. but happy hone ke baad agaik buk buk kar ke will convert your sad mood to angry mood  then happy😁</li>
+                    <li>👂 I promise to listen to your rants. (bilkul nahi.. 😂)</li>
+                    <li>🤝 I promise to always be your partner in crime. vo to hamara roz ka hai 😂</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Override floating emojis for this specific request -->
+    <script>
+        const CUSTOM_EMOJIS = ['🧸', '🍫', '🤝', '🤞', '💖'];
+        // We will let the main script use these if we set them before load?
+        // Actually, main script runs on DOMContentLoaded.
+        // We can just add more floaters manually here.
+        setInterval(() => {
+            const container = document.querySelector('.floating-container');
+            if (container) {
+                const el = document.createElement('div');
+                el.className = 'floater';
+                el.innerText = CUSTOM_EMOJIS[Math.floor(Math.random() * CUSTOM_EMOJIS.length)];
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                el.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
+                container.appendChild(el);
+                setTimeout(() => el.remove(), 7000);
+            }
+        }, 500);
+
+        function revealPromises() {
+            document.getElementById('extra-promises').classList.remove('hidden');
+            // Trigger confetti from main script if available
+            if (typeof createConfetti === 'function') createConfetti();
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day! ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gift-box {
+            width: 150px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .final-msg {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border: 2px solid #ff4d6d;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+            animation: popIn 0.5s ease-out;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body id="valentine-day">
+    <div class="container">
+
+        <a href="index.html" class="nav-link" style="position: absolute; top: 20px; left: 20px;">🏠 Home</a>
+
+        <div class="card">
+            <h1>Happy Valentine's Day Ammu! ❤️</h1>
+            <p>From your bestie dost with benifits! 😜</p>
+
+            <div style="margin: 30px;">
+                <p>Click the gift to open your final surprise! 🎁</p>
+                <img id="gift-box" class="gift-box" src="https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif"
+                    alt="Gift Box">
+            </div>
+
+            <div id="final-msg" class="final-msg hidden">
+                <h2>I Promise... 🤞</h2>
+                <p>To always annoy you, my dear Ammu, to always share chocolates (okay maybe not always), and to always
+                    be there for
+                    you!</p>
+                <p>Sending you lots of love bites (chocolate ones! 🍫) and teddy hugs! 🧸</p>
+                <p>Happy Valentine's Day Bestie! 💖</p>
+                <div style="font-size: 3rem; margin-top: 10px;">🧸🍫❤️</div>
+            </div>
+
+            <div id="game-result" class="hidden"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Override the generic valentine init if needed, or rely on script.js
+        // The script.js has an initValentinePage() which handles the click.
+        // Let's refine the script.js logic here to make sure it works perfectly for this specific HTML structure.
+
+        const box = document.getElementById('gift-box');
+        const msg = document.getElementById('final-msg');
+
+        box.addEventListener('click', () => {
+            // Change image to open box or explosion
+            box.src = "https://media.giphy.com/media/l4pTfx2qLszoacZRS/giphy.gif"; // Open gif
+            msg.classList.remove('hidden');
+            createConfetti();
+
+            // Spawn extra hearts
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.style.position = 'fixed';
+                heart.style.left = Math.random() * window.innerWidth + 'px';
+                heart.style.top = -50 + 'px';
+                heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+                heart.style.animation = 'floatDown 3s linear';
+                document.body.appendChild(heart);
+
+                setTimeout(() => heart.remove(), 3000);
+            }, 300);
+        });
+
+        // Add CSS for floatDown dynamically
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes floatDown {
+                0% { top: -50px; opacity: 1; transform: rotate(0deg); }
+                100% { top: 100vh; opacity: 0; transform: rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>

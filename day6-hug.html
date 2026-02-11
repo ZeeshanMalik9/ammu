@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hug Day 🤗</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="hug-day">
+    <div class="container">
+
+        <a href="index.html" class="nav-link" style="position: absolute; top: 20px; left: 20px;">🏠 Home</a>
+
+        <div class="card">
+            <h1>Sending You a Big Hug Ammu! 🤗</h1>
+            <p>Sometimes you just need a squeeze!</p>
+            <p>Hold the button to charge up the biggest hug ever!</p>
+
+            <div
+                style="margin: 40px auto; width: 80%; max-width: 300px; height: 30px; background: #ddd; border-radius: 15px; overflow: hidden; border: 2px solid #aaa;">
+                <div id="hug-meter-fill"
+                    style="width: 0%; height: 100%; background: linear-gradient(90deg, #ff9a9e, #fecfef); transition: width 0.1s;">
+                </div>
+            </div>
+
+            <button id="hug-btn" class="btn" style="user-select: none;">Hold Me! 🤗</button>
+
+            <div id="game-result" class="hidden" style="font-size: 1.5rem; color: #ff6b6b; margin-top: 20px;"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

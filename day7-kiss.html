@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiss Day 💋</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .kiss-target {
+            font-size: 5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: inline-block;
+            margin: 20px;
+        }
+
+        .kiss-target:active {
+            transform: scale(1.2);
+        }
+
+        .flying-kiss {
+            position: absolute;
+            font-size: 3rem;
+            animation: flyKiss 1s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes flyKiss {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(0, -200px) scale(2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body id="kiss-day">
+    <div class="container">
+
+        <a href="index.html" class="nav-link" style="position: absolute; top: 20px; left: 20px;">🏠 Home</a>
+
+        <div class="card">
+            <h1>Happy Kiss Day Ammu! 💋</h1>
+            <p>Send a billion virtual kisses!</p>
+            <p>Tap the emoji below to send a kiss!</p>
+
+            <div class="kiss-target" id="kiss-emoji">😘</div>
+
+            <p>Kisses Sent: <span id="kiss-count">0</span></p>
+
+            <div id="game-result" class="hidden" style="font-size: 1.5rem; color: #d62828; margin-top: 20px;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const kissEmoji = document.getElementById('kiss-emoji');
+        const countDisplay = document.getElementById('kiss-count');
+        let count = 0;
+
+        kissEmoji.addEventListener('click', (e) => {
+            count++;
+            countDisplay.innerText = count;
+
+            // Create flying kiss animation
+            const flying = document.createElement('div');
+            flying.innerText = '💋';
+            flying.className = 'flying-kiss';
+
+            // Position near the click or center
+            const rect = kissEmoji.getBoundingClientRect();
+            flying.style.left = (rect.left + rect.width / 2 - 20) + 'px';
+            flying.style.top = (rect.top + rect.height / 2 - 20) + 'px';
+
+            document.body.appendChild(flying);
+            setTimeout(() => flying.remove(), 1000);
+
+            if (count === 10) {
+                document.getElementById('game-result').innerText = "Muaaah! 😘";
+                document.getElementById('game-result').classList.remove('hidden');
+                createConfetti();
+            }
+        });
+    </script>
+</body>
+
+</html>
